@@ -4,6 +4,7 @@
 #Run 'chmod a+x /path/to/this/script' to make it executable
 #Run 'crontab -e' and write '*/10 * * * * /path/to/this/script' to make it run every 10 minutes
 #Of course you can change the number if you want
+#Note that it will cause the script to send you notification every 10 minutes until the battery level is between the two tresholds
 
 #How low/high does the battery level have to be to send the notification
 #change it if you need
@@ -19,11 +20,11 @@ average_battery_level=$((battery_level / number_of_batteries))
 #Send notification if battery level is below the set treshold
 if [ $average_battery_level -le $battery_level_notification_lower_treshold ]
 then
-    notify-send "Low battery level!" "${average_battery_level}%"
+    XDG_RUNTIME_DIR=/run/user/$(id -u) notify-send "Low battery level!" " ${average_battery_level}% "
 fi
 
 #Send notification if battery level is above the set treshold
 if [ $average_battery_level -ge $battery_level_notification_upper_treshold ]
 then
-    notify-send "High battery level: ${average_battery_level}%" "Remove the charger!"
+    XDG_RUNTIME_DIR=/run/user/$(id -u) notify-send "High battery level: ${average_battery_level}%" "Remove the charger!"
 fi
