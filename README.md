@@ -1,9 +1,9 @@
-# Script to notify user about their nearly dying battery
+# Script to notify user about their nearly dying/overloading battery
 -> Written for Linux
 
 -> Supports devices with multiple batteries
 
-Well that's basically all of its features, it only has 7 lines of actual code, what do you expect
+Well that's basically all of its features, it only has 13 lines of actual code, what do you expect
 
 # Installing script
 To use the script:
